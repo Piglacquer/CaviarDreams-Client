@@ -1,10 +1,12 @@
 <template>
-  <div>
+  <div class='users'>
     <h3>UserProfiles</h3>
     <UserList
     :listOfUsers='listOfUsers'
+    :usersApi='usersApi'
+    :getUsers='getUsers'
     ></UserList>
-    <AddUser></AddUser>
+    <AddUser :getUsers='getUsers'></AddUser>
   </div>
 </template>
 <script>
@@ -35,4 +37,10 @@ export default {
   }
 }</script>
 <style scoped>
+.users{
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
 </style>

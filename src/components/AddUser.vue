@@ -1,9 +1,10 @@
 <template>
   <div id="">
     <h3>AddUser</h3>
-    <form class="" action="index.html" method="post">
-      <label for="userName">Username</label>
-      <input type="text" name="UserName" placeholder='Marcus Aurelius'>
+    <form method="post" v-on:submit.prevent="postUser">
+      <label for="ticker">Username:</label>
+      <input type="text" name="UserName" placeholder='Marcus Aurelius' v-model='user.name'>
+      <button type="submit" class='button-add'>Add User</button>
     </form>
   </div>
 </template>
@@ -11,8 +12,27 @@
 export default {
   name: "AddUser",
   data() {
-    return {}
-  }
+    return {
+      postUserUrl: 'https://tower-server.herokuapp.com/users/',
+      user: {
+        name: ''
+    }
+    }
+  },
+  methods: {
+    postUser(){
+     fetch(this.postUserUrl, {
+        method: 'POST',
+        body: JSON.stringify(this.user),
+        headers: new Headers({
+    'Content-Type': 'application/json'})
+      })
+      .then(resp => resp.json())
+      .then(() => this.user.name = '')
+      .then(() => this.getUsers())
+      }
+    },
+    props: ['getUsers']
 }</script>
 <style scoped>
 </style>

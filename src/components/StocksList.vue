@@ -1,10 +1,14 @@
 <template>
   <div id="">
-    <StockCard v-for='stock in userStocks' :stock='stock' :key='stock.tickerSymbol'></StockCard>
+    <router-link to="/" tag='h3'>Home</router-link>
+    <AddStock :user='this.$route.params.userId' :userStocksFetch='userStocksFetch' :stockListApiUrl='stockListApiUrl' :stocksApi='stocksApi' />
+    <StockCard v-for='stock in userStocks' :stock='stock' :key='stock.tickerSymbol' :userStocksFetch='userStocksFetch' :stockListApiUrl='stockListApiUrl' :stocksApi='stocksApi'/>
   </div>
 </template>
 <script>
 import StockCard from '@/components/StockCard'
+import AddStock from '@/components/AddStock'
+
 export default {
   name: "StocksList",
   data() {
@@ -14,11 +18,17 @@ export default {
     }
   },
   components: {
-    StockCard
+    StockCard,
+    AddStock
   },
   methods: {
-    StockListApiUrl(){
+    stockListApiUrl(){
       this.stocksApi = 'https://tower-server.herokuapp.com/stocks/' + this.$route.params.userId
+    },
+    userStocksFetch(url){
+      fetch(url)
+      .then(resp => resp.json())
+      .then(resp => this.userStocks = (resp.stocks))
     }
     // alphaApiUrl(userStocks){
     //   let url= 'https://www.alphavantage.co/query?function=BATCH_STOCK_QUOTES&symbols='
@@ -30,13 +40,8 @@ export default {
     // }
   },
   mounted() {
-    this.StockListApiUrl(),
-
-    fetch(this.stocksApi)
-    .then(resp => resp.json())
-    .then(resp => this.userStocks = (resp.stocks))
-
-
+    this.stockListApiUrl(),
+    this.userStocksFetch(this.stocksApi)
   }
 }</script>
 <style scoped>

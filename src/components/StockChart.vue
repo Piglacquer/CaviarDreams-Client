@@ -1,31 +1,54 @@
 <template>
-  <div id="">
-    <p>CurrentPrice: {{stockCurrentIntraday}}</p>
+  <div id="Chart">
+    <div class="container">
+      <div class="Chart__list">
+        <div class="Chart">
+          <Chart v-if='intradayLoaded && monthlyLoaded' :chartData="{stockVolumeIntraday, stockCurrentIntraday, stockHighsMonthly, stockLowsMonthly, stockKeysIntraday}" :height='130' />
+        </div>
+      </div>
+    </div>
+    <!-- <p>CurrentPrice: {{stockCurrentIntraday}}</p>
     <p>IntradayVolume: {{stockVolumeIntraday}}</p>
     <p>MonthlyHighs: {{stockHighsMonthly}}</p>
     <p>MonthlyLows: {{stockLowsMonthly}}</p>
-    <p>IntradayKeys: {{stockKeysIntraday}}</p>
+    <p>IntradayKeys: {{stockKeysIntraday}}</p> -->
   </div>
 </template>
+
 <script>
+import Chart from '@/components/Chart'
+
 export default {
   name: "StockChart",
+  components: {
+    Chart
+  },
   data() {
     return {
     }
   },
-  props: ['stockVolumeIntraday', 'stockHighsMonthly', 'stockLowsMonthly', 'stockKeysIntraday', 'stockCurrentIntraday'],
-  methods:{
+  mounted() {
 
   },
-  mounted(){
+  props: ['stockVolumeIntraday', 'stockHighsMonthly', 'stockLowsMonthly', 'stockKeysIntraday', 'stockCurrentIntraday', 'intradayLoaded', 'monthlyLoaded'],
+  methods:{
   },
   computed:{
   }
 }</script>
-<style scoped>
-div{
-
+<style>
+.Chart {
+  background: #212733;
+  border-radius: 15px;
+  box-shadow: 0px 2px 15px rgba(25, 25, 25, 0.27);
+  margin:  25px -10px;
 }
+
+/* .Chart h2 {
+  margin-top: 0;
+  padding: 15px 0;
+  color:  rgba(255, 0,0, 0.5);
+  border-bottom: 1px solid #323d54;
+} */
 
 </style>
