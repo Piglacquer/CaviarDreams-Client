@@ -48,9 +48,5 @@ export default {
   justify-content: space-between;
   align-items: center;
   height: 100vh;
-  background-image: url('../../static/oysterWithCaviar.svg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
 }
 </style>

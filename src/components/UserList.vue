@@ -72,7 +72,6 @@ export default {
   background: linear-gradient(to bottom right, #9E8A7C, #857468);
   animation: 1s ease-out 0s 1 slideInFromLeft;
   padding: 30px;
-  /* padding: 10px; */
   border-radius: 15px;
   margin-top: 10px;
 }
@@ -81,7 +80,6 @@ export default {
   background: linear-gradient(to bottom right, #58A0E8 , #2A6BAB);
   animation: 1s ease-out 0s 1 slideInFromRight;
   padding: 30px;
-  /* padding: 5px 15px 5px 15px; */
   border-radius: 15px;
   margin: 10px 2rem 0 1rem;
   font-family: 'Mukta Mahee', sans-serif;

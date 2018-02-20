@@ -52,9 +52,5 @@ export default {
   align-items: center;
   width: 100%;
   height: 100vh;
-  background-image: url('../../static/oysterWithCaviar.svg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
 }
 </style>

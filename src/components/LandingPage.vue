@@ -9,13 +9,9 @@
 <script>
 export default {
   name: "LandingPage",
-  data(){
-    return {
-
-    }
-  }
 }</script>
 <style scoped>
+
 a{
   text-decoration: none;
   color: black;
@@ -33,6 +29,7 @@ img{
   width: 40%;
   margin-bottom: -9rem;
 }
+
 h1{
   font-family: 'Yeseva One';
   font-size: 6vw;

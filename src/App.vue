@@ -17,10 +17,12 @@ body{
   padding: 0;
   margin: 0;
   height: 100vh;
+  background-image: url('../static/oysterWithCaviar.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
 }
-h4{
-  font-family: 'Mukta Mahee', sans-serif;
-}
+
 .add-form{
   background-color: white;
   padding: 15px;
@@ -52,11 +54,11 @@ h4{
 
 h3 {
   font-family: 'Yeseva One';
-  color: black;
-  background-color: white;
+  color: white;
 }
 
 h4{
   color: white;
+  font-family: 'Mukta Mahee', sans-serif;
 }
 </style>
