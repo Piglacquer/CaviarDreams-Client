@@ -1,15 +1,18 @@
 <template>
   <div id="StockCard">
-    <div class="Numbers">
       <div class='stock-header'>
-        <h3 class='ticker'>Ticker: {{stock.tickerSymbol}}</h3>
+        <h3 class='ticker'> {{stock.tickerSymbol}}</h3>
         <button type="button" class='button-remove' @click='removeAndRefresh' name="remove">Remove Stock</button>
       </div>
-      <h4 class='shares'>Number of Shares: {{stock.numberOfShares}}</h4>
-      <h4 class='cost'>Average Cost: {{stock.avgCost}}</h4>
-      <h4 class='gainLoss'>Unrealized Gain/Loss: {{unrealizedGainLoss}}</h4>
-    </div>
-    <StockChart :stockVolumeIntraday='stockVolumeIntraday' :stockHighsMonthly='stockHighsMonthly' :stockLowsMonthly='stockLowsMonthly' :stockKeysIntraday='stockKeysIntraday' :stockCurrentIntraday='stockCurrentIntraday' :intradayLoaded='intradayLoaded' :monthlyLoaded='monthlyLoaded' />
+      <div class="stockData-chart">
+        <div class="stockData">
+          <h4 class='shares'>Number of Shares: {{stock.numberOfShares}}</h4>
+          <h4 class='cost'>Average Cost: {{stock.avgCost}}</h4>
+          <h4 class='gainLoss'>Unrealized Gain/Loss: {{unrealizedGainLoss}}</h4>
+        </div>
+        <StockChart :stockVolumeIntraday='stockVolumeIntraday' :stockHighsMonthly='stockHighsMonthly' :stockLowsMonthly='stockLowsMonthly' :stockKeysIntraday='stockKeysIntraday' :stockCurrentIntraday='stockCurrentIntraday' :intradayLoaded='intradayLoaded' :monthlyLoaded='monthlyLoaded'
+        :stockKeysIntradayTruncated='stockKeysIntradayTruncated'/>
+      </div>
   </div>
 </template>
 <script>
@@ -23,6 +26,7 @@ export default {
       monthlyUrl: '',
       stockDataIntraday: [],
       stockKeysIntraday: [],
+      stockKeysIntradayTruncated: [],
       stockVolumeIntraday: [],
       stockCurrentIntraday: [],
       stockDataMonthly: [],
@@ -50,6 +54,7 @@ export default {
         .then(resp => resp.json())
         .then(resp => this.stockDataIntraday = resp['Time Series (1min)'])
         .then(() => this.getKeysIntraday())
+        .then(() => this.getTruncatedKeysIntraday())
         .then(() => this.populateStockCurrent())
         .then(() => this.populateStockVolume())
         .then(() => this.intradayLoaded = true)
@@ -66,6 +71,12 @@ export default {
     getKeysIntraday(){
       this.stockKeysIntraday = Object.keys(this.stockDataIntraday)
     },
+    getTruncatedKeysIntraday(){
+        let keys = Object.keys(this.stockDataIntraday)
+        for(let i = 0; i < keys.length; i++){
+          this.stockKeysIntradayTruncated.push(keys[i].slice(10))
+        }
+      },
     populateStockVolume(){
       for (var i = 0; i < this.stockKeysIntraday.length; i++) {
         this.stockVolumeIntraday.push(this.stockDataIntraday[this.stockKeysIntraday[i]]['5. volume'])
@@ -93,8 +104,6 @@ export default {
     },
     stockDeleteApiUrl(){
       this.deleteStockUrl = 'https://tower-server.herokuapp.com/stocks/' + this.$route.params.userId
-      console.log(this.deleteStockUrl)
-      console.log(this.stock.tickerSymbol, 'hi')
     },
     removeStock(){
       return fetch(this.deleteStockUrl, {
@@ -125,21 +134,39 @@ export default {
 }</script>
 <style scoped>
 #StockCard{
-  /* display:flex; */
-  /* flex-flow: row nowrap; */
-  /* width: 100%;
-  height: 100%; */
-}
-.Numbers{
-  display: flex;
+  display:flex;
   flex-flow: column nowrap;
+  width: 80vw;
+  background: linear-gradient(to bottom right, #8FCFCD , #7FB8B6);
+  border-radius: 15px;
+  margin-top: 1rem;
 }
-StockChart{
 
-}
 .stock-header{
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to bottom right, #58A0E8 , #2A6BAB);
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  padding: 0 15px 0 15px;
+}
+
+.stockData{
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.stockData-chart{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+  width: 80vw;
+}
+
+.ticker{
+  font-size: 1.5rem;
 }
 </style>

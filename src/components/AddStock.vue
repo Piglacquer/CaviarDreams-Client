@@ -1,5 +1,5 @@
 <template>
-  <div id="">
+  <div class='add-form'>
     <form method="post" v-on:submit.prevent="postGetReset">
       <label for="ticker">Ticker Symbol:</label>
       <input v-model='stock.tickerSymbol' type="text" name="ticker" placeholder='MSFT'>
@@ -50,4 +50,11 @@ export default {
   }
 }</script>
 <style scoped>
+.add-form{
+  background: linear-gradient(to bottom right, #B0C289, #97C289);
+}
+
+form{
+  font-family: 'Mukta Mahee', sans-serif;
+}
 </style>

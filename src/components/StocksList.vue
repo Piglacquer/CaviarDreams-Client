@@ -1,13 +1,18 @@
 <template>
-  <div id="">
-    <router-link to="/" tag='h3'>Home</router-link>
+  <div id="stocks-list">
+    <Header />
+    <EditUsername />
     <AddStock :user='this.$route.params.userId' :userStocksFetch='userStocksFetch' :stockListApiUrl='stockListApiUrl' :stocksApi='stocksApi' />
     <StockCard v-for='stock in userStocks' :stock='stock' :key='stock.tickerSymbol' :userStocksFetch='userStocksFetch' :stockListApiUrl='stockListApiUrl' :stocksApi='stocksApi'/>
+    <Footer />
   </div>
 </template>
 <script>
 import StockCard from '@/components/StockCard'
 import AddStock from '@/components/AddStock'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
+import EditUsername from '@/components/EditUsername'
 
 export default {
   name: "StocksList",
@@ -19,7 +24,10 @@ export default {
   },
   components: {
     StockCard,
-    AddStock
+    AddStock,
+    Header,
+    Footer,
+    EditUsername
   },
   methods: {
     stockListApiUrl(){
@@ -30,14 +38,6 @@ export default {
       .then(resp => resp.json())
       .then(resp => this.userStocks = (resp.stocks))
     }
-    // alphaApiUrl(userStocks){
-    //   let url= 'https://www.alphavantage.co/query?function=BATCH_STOCK_QUOTES&symbols='
-    //   for(let i = 0; i < userStocks.length; i++){
-    //     url += userStocks[i].tickerSymbol + ','
-    //   }
-    //   this.alphaApi = url.slice(0, -1) + '&apikey=R0J2HMLV25PDH5MU'
-    //   console.log(this.alphaApi)
-    // }
   },
   mounted() {
     this.stockListApiUrl(),
@@ -45,5 +45,16 @@ export default {
   }
 }</script>
 <style scoped>
-
+#stocks-list{
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-image: url('../../static/oysterWithCaviar.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
 </style>

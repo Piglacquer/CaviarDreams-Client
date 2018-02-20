@@ -3,15 +3,10 @@
     <div class="container">
       <div class="Chart__list">
         <div class="Chart">
-          <Chart v-if='intradayLoaded && monthlyLoaded' :chartData="{stockVolumeIntraday, stockCurrentIntraday, stockHighsMonthly, stockLowsMonthly, stockKeysIntraday}" :height='130' />
+          <Chart v-if='intradayLoaded && monthlyLoaded' :chartData="{stockVolumeIntraday, stockCurrentIntraday, stockHighsMonthly, stockLowsMonthly, stockKeysIntraday, stockKeysIntradayTruncated}" :height='200' :width='900'/>
         </div>
       </div>
     </div>
-    <!-- <p>CurrentPrice: {{stockCurrentIntraday}}</p>
-    <p>IntradayVolume: {{stockVolumeIntraday}}</p>
-    <p>MonthlyHighs: {{stockHighsMonthly}}</p>
-    <p>MonthlyLows: {{stockLowsMonthly}}</p>
-    <p>IntradayKeys: {{stockKeysIntraday}}</p> -->
   </div>
 </template>
 
@@ -30,7 +25,7 @@ export default {
   mounted() {
 
   },
-  props: ['stockVolumeIntraday', 'stockHighsMonthly', 'stockLowsMonthly', 'stockKeysIntraday', 'stockCurrentIntraday', 'intradayLoaded', 'monthlyLoaded'],
+  props: ['stockVolumeIntraday', 'stockHighsMonthly', 'stockLowsMonthly', 'stockKeysIntraday', 'stockCurrentIntraday', 'intradayLoaded', 'monthlyLoaded', 'stockKeysIntradayTruncated'],
   methods:{
   },
   computed:{

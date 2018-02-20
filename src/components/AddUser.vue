@@ -1,6 +1,5 @@
 <template>
-  <div id="">
-    <h3>AddUser</h3>
+  <div class='add-form'>
     <form method="post" v-on:submit.prevent="postUser">
       <label for="ticker">Username:</label>
       <input type="text" name="UserName" placeholder='Marcus Aurelius' v-model='user.name'>
@@ -16,7 +15,7 @@ export default {
       postUserUrl: 'https://tower-server.herokuapp.com/users/',
       user: {
         name: ''
-    }
+      }
     }
   },
   methods: {
@@ -35,4 +34,7 @@ export default {
     props: ['getUsers']
 }</script>
 <style scoped>
+.add-form{
+  background: linear-gradient(to bottom right, #B0C289, #97C289);
+}
 </style>

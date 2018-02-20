@@ -12,17 +12,12 @@ export default {
     return {
       options: {
         responsive: true,
-        // maintainAspectRatio: true,
         scales: {
           yAxes: [
             {
               id: 'A',
               type: 'logarithmic',
               position: 'left'
-              // ticks: {
-              //   max: Math.max(...this.chartData.stockVolumeIntraday),
-              //   min: Math.min(...this.chartData.stockVolumeIntraday)
-              // }
             },
             {
               id: 'B',
@@ -52,7 +47,7 @@ export default {
 
     this.renderChart(
       {
-        labels: this.chartData.stockKeysIntraday,
+        labels: this.chartData.stockKeysIntradayTruncated,
         datasets: [
           {
             label: 'Volume',

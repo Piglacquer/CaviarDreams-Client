@@ -1,17 +1,20 @@
 <template>
   <div class='users'>
-    <h3>UserProfiles</h3>
+    <Header />
+    <AddUser :getUsers='getUsers'></AddUser>
     <UserList
     :listOfUsers='listOfUsers'
     :usersApi='usersApi'
     :getUsers='getUsers'
     ></UserList>
-    <AddUser :getUsers='getUsers'></AddUser>
+    <Footer />
   </div>
 </template>
 <script>
 import UserList from '@/components/UserList'
 import AddUser from '@/components/AddUser'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
 
 export default {
   name: "UserProfiles",
@@ -23,7 +26,9 @@ export default {
   },
   components:{
     UserList,
-    AddUser
+    AddUser,
+    Header,
+    Footer
   },
   methods:{
     getUsers(){
@@ -42,5 +47,10 @@ export default {
   flex-flow: column nowrap;
   justify-content: space-between;
   align-items: center;
+  height: 100vh;
+  background-image: url('../../static/oysterWithCaviar.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
 }
 </style>
