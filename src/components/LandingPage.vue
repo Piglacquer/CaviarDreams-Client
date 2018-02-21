@@ -1,7 +1,6 @@
 <template>
   <router-link to='/home'>
     <div id="main">
-      <img src="../../static/oysterWithCaviar.svg" alt="OverFlowing Caviar">
       <h1>Caviar Dreams</h1>
     </div>
   </router-link>
@@ -25,10 +24,10 @@ a{
   height: 100vh;
 }
 
-img{
+/* img{
   width: 40%;
   margin-bottom: -9rem;
-}
+} */
 
 h1{
   font-family: 'Yeseva One';
