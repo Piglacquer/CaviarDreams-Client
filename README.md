@@ -1,21 +1,23 @@
-# client
+# About
 
-> A Vue.js project
+This is a project to help familiarize myself with Vue and the way it handles data (minus VueX), knex and PostgreSQL, and ChartJS. The goal was to create an application that could help track your stock portfolio.
 
-## Build Setup
+# Challenges
 
-``` bash
-# install dependencies
-npm install
+* I used a ChartJS wrapper for Vue that was the most starred, but not the most useable.
+* Getting the charts to the size I wanted, but now they're not responsive.
+* The stock data is coming from the AlphaVantage API, which takes a VERY long time to load in.
+* Styling is funny.
 
-# serve with hot reload at localhost:8080
-npm run dev
+# Installation
 
-# build for production with minification
-npm run build
+* Clone the repo to your machine.
+* CD into the folder you cloned.
+* Run `npm install`.
+* To check it out locally run `npm run dev`, then command-click the address.
 
-# build for production and view the bundle analyzer report
-npm run build --report
-```
+# Future Iterations
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+* Change the styling so it looks mature, and not like an page from the 90's.
+* Add more meaningful information to the stock cards.
+* Add OAuth.
