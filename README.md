@@ -11,13 +11,17 @@ This is a project to help familiarize myself with Vue and the way it handles dat
 
 # Installation
 
-* Clone the repo to your machine.
+* Clone the repo to your machine by clicking the green clone button, copying the url, then in your terminal of choice typing `git clone [url]`
 * CD into the folder you cloned.
-* Run `npm install`.
+* Run `npm install` to install dependencies.
 * To check it out locally run `npm run dev`, then command-click the address.
 
 # Future Iterations
 
-* Change the styling so it looks mature, and not like an page from the 90's.
+* Change the styling so it looks mature.
 * Add more meaningful information to the stock cards.
 * Add OAuth.
+
+# Contact
+
+Patrick Biffle, pbiffle@gmail.com
